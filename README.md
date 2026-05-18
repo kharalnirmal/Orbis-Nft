@@ -31,7 +31,7 @@ _Cinematic visuals · Liquid-glass UI · Immersive aesthetics_
 
 ## 🌌 About
 
-**Vibe Coded** is a concise, shareable NFT landing page template built with a dark, space-themed aesthetic. Designed for NFT drops, artist showcases, and promotional microsites — it's production-ready, visually striking, and fully customizable.
+**Orbis-Nft** is a concise, shareable NFT landing page template built with a dark, space-themed aesthetic. Designed for NFT drops, artist showcases, and promotional microsites — it's production-ready, visually striking, and fully customizable.
 
 > **Open use** — fork it, ship it, build on it. Credit appreciated, never required.
 
