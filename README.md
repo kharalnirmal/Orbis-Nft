@@ -1,88 +1,144 @@
-# Vibe Coded
+<div align="center">
 
-VIBE CODED WEBSITE
+# ✦ VIBE CODED
 
-Anyone can use it for their project — just give credit if you want.
+**A dark, space-themed NFT landing page template**
 
-Vibe Coded website — a dark, space-themed NFT landing built with React and Tailwind CSS.
+_Cinematic visuals · Liquid-glass UI · Immersive aesthetics_
 
-Features:
+<br/>
 
-Built with: Vite, React, TypeScript, Tailwind CSS
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
-Quick start:
+[![License: MIT](https://img.shields.io/badge/License-Open%20Use-green?style=flat-square)](./LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/yourusername/vibe-coded/pulls)
+[![Made by Nirmal](https://img.shields.io/badge/Made%20by-Nirmal-blueviolet?style=flat-square)](https://github.com/yourusername)
+
+</div>
+
+---
+
+## 📸 Preview
+
+<div align="center">
+  <img src="public/image.png" alt="Landing page preview" width="90%" />
+</div>
+
+---
+
+## 🌌 About
+
+**Vibe Coded** is a concise, shareable NFT landing page template built with a dark, space-themed aesthetic. Designed for NFT drops, artist showcases, and promotional microsites — it's production-ready, visually striking, and fully customizable.
+
+> **Open use** — fork it, ship it, build on it. Credit appreciated, never required.
+
+---
+
+## ✨ Features
+
+- 🎬 **Cinematic Backgrounds** — Video backgrounds with texture overlays for deep, immersive visuals
+- 🪟 **Liquid-Glass UI** — Frosted glass cards with neon accents and custom branded typography
+- ♿ **Accessible Accordion** — Radix-powered FAQ section with keyboard navigation and ARIA support
+- 📱 **Fully Responsive** — Optimized layout for both desktop and mobile viewports
+- ⚡ **Blazing Fast** — Vite-powered dev/build pipeline with near-instant HMR
+
+---
+
+## 🛠 Tech Stack
+
+| Technology                                                                                 | Purpose                  |
+| ------------------------------------------------------------------------------------------ | ------------------------ |
+| [Vite](https://vitejs.dev)                                                                 | Build tool & dev server  |
+| [React](https://react.dev)                                                                 | UI framework             |
+| [TypeScript](https://www.typescriptlang.org)                                               | Type safety              |
+| [Tailwind CSS](https://tailwindcss.com)                                                    | Utility-first styling    |
+| [@radix-ui/react-accordion](https://www.radix-ui.com/primitives/docs/components/accordion) | Accessible FAQ component |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js `v18+`
+- npm or your preferred package manager
+
+### Installation
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/vibe-coded.git
+cd vibe-coded
+
+# 2. Install dependencies
 npm install
+
+# 3. Start the development server
 npm run dev
 ```
 
-Build for production:
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Production Build
 
 ```bash
 npm run build
 ```
 
-Author: Nirmal
-![Landing page](public/image.png)
-VIBE CODED WEBSITE
-
-A concise, shareable NFT landing page template with a dark, space-themed aesthetic. This project demonstrates a modern front-end stack and design patterns suitable for NFT drops, artist showcases, and promotional microsites.
-
-Anyone may use this project in their own work — credit to the original author is appreciated but not required.
-
-Screenshot
-![Landing page](public/image.png)
-
-Key features
-
-- Cinematic video backgrounds and texture overlays for immersive visuals
-- Liquid-glass UI cards, neon typography and custom fonts for branding
-- Radix-based FAQ accordion for accessible, interactive content
-- Responsive layout optimized for desktop and mobile
-
-Technology
-
-- Vite
-- React
-- TypeScript
-- Tailwind CSS
-- @radix-ui/react-accordion
-
-Getting started
-
-1. Install dependencies
+Preview the production build locally:
 
 ```bash
-npm install
+npm run preview
 ```
 
-2. Run the development server
+---
 
-```bash
-npm run dev
+## 📁 Project Structure
+
+```
+vibe-coded/
+├── public/
+│   └── image.png          # Screenshot / static assets
+├── src/
+│   ├── components/        # Reusable UI components
+│   └── main.tsx           # Application entry point
+├── index.html
+├── tailwind.config.ts
+├── vite.config.ts
+└── tsconfig.json
 ```
 
-3. Build for production
+---
 
-```bash
-npm run build
-```
+## 🤝 Contributing
 
-Project structure
+Contributions are welcome! If you have ideas for improvements or spot a bug:
 
-- `public/` — static assets (includes `image.png` screenshot)
-- `src/` — application source code
-- `src/components/` — reusable UI components
+1. Fork the repository
+2. Create a feature branch — `git checkout -b feat/your-feature`
+3. Commit your changes — `git commit -m "feat: add your feature"`
+4. Push to the branch — `git push origin feat/your-feature`
+5. Open a Pull Request
 
-Contributing
+Please follow conventional commit messages and keep PRs focused.
 
-- Feel free to fork and adapt this template. Pull requests are welcome for improvements and bug fixes.
+---
 
-Usage & license
+## 📄 License
 
-- This template is provided without restrictions: use it in personal or commercial projects. Attribution is appreciated but optional.
+This project is **open use** — feel free to use it in personal or commercial projects without restriction. Attribution is appreciated but entirely optional.
 
-Author
+---
 
-- Nirmal
+<div align="center">
+
+## 👤 Author **Nirmal Kharal**
+
+_Built with ☕ and good vibes._
+
+⭐ **Star this repo if you found it useful!**
+
+</div>
