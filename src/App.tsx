@@ -1,10 +1,27 @@
-import { ChevronDown, ChevronRight, Github, Mail, Twitter } from "lucide-react";
+import { useState } from "react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Github,
+  Mail,
+  Menu,
+  Twitter,
+  X,
+} from "lucide-react";
 import * as Accordion from "@radix-ui/react-accordion";
 
 const socialLinks = [
   { label: "Mail", icon: Mail, href: "mailto:hello@orbis.nft" },
   { label: "Twitter", icon: Twitter, href: "https://nirmalkharal.tech/" },
   { label: "Github", icon: Github, href: "https://nirmalkharal.tech/" },
+];
+
+const navItems = [
+  { label: "Homepage", href: "#homepage" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Buy NFT", href: "#buy-nft" },
+  { label: "FAQ", href: "#faq-contact" },
+  { label: "Contact", href: "#faq-contact" },
 ];
 
 const collectionItems = [
@@ -141,6 +158,8 @@ function FaqAccordion() {
 }
 
 export default function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <main className="bg-background text-cream">
       <section
@@ -158,33 +177,74 @@ export default function App() {
         <div className="absolute inset-0 bg-[#010828]/35" />
 
         <div className="relative flex flex-col mx-auto px-5 sm:px-8 lg:px-14 pt-5 sm:pt-7 lg:pt-8 pb-10 sm:pb-12 lg:pb-16 max-w-[1831px] min-h-screen">
-          <header className="flex justify-between items-start gap-4">
-            <div className="font-grotesk text-[16px] text-cream uppercase tracking-[0.08em]">
-              Orbis.Nft
+          <header className="top-5 sm:top-7 lg:top-8 right-5 sm:right-8 lg:right-14 left-5 sm:left-8 lg:left-14 z-30 absolute flex flex-col gap-4">
+            <div className="flex justify-between items-center gap-4">
+              <div className="font-grotesk text-[16px] text-cream uppercase tracking-[0.08em]">
+                Orbis.Nft
+              </div>
+              <nav
+                aria-label="Primary"
+                className="hidden lg:block px-[52px] py-[24px] rounded-[28px] liquid-glass"
+              >
+                <div className="flex items-center gap-10">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="font-grotesk text-[13px] text-cream hover:text-neon uppercase tracking-[0.08em] transition"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </nav>
+              <button
+                type="button"
+                className="lg:hidden inline-flex justify-center items-center bg-black/20 hover:bg-white/10 border border-white/10 rounded-full w-12 h-12 transition liquid-glass"
+                aria-label={
+                  mobileMenuOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+                }
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation"
+                onClick={() => setMobileMenuOpen((open) => !open)}
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-5 h-5 text-cream" />
+                ) : (
+                  <Menu className="w-5 h-5 text-cream" />
+                )}
+              </button>
+              <div className="hidden lg:block w-[56px]" />
             </div>
-            <nav className="hidden lg:block px-[52px] py-[24px] rounded-[28px] liquid-glass">
-              <div className="flex items-center gap-10">
-                {[
-                  { label: "Homepage", href: "#homepage" },
-                  { label: "Gallery", href: "#gallery" },
-                  { label: "Buy NFT", href: "#buy-nft" },
-                  { label: "FAQ", href: "#faq-contact" },
-                  { label: "Contact", href: "#faq-contact" },
-                ].map((item) => (
+
+            <nav
+              id="mobile-navigation"
+              aria-label="Mobile primary"
+              className={`lg:hidden overflow-hidden rounded-[24px] liquid-glass transition-all duration-300 ${
+                mobileMenuOpen
+                  ? "max-h-[320px] opacity-100 translate-y-0"
+                  : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
+              }`}
+            >
+              <div className="flex flex-col gap-1 p-3 sm:p-4">
+                {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="font-grotesk text-[13px] text-cream hover:text-neon uppercase tracking-[0.08em] transition"
+                    className="flex justify-between items-center hover:bg-white/10 px-4 py-4 rounded-[18px] font-grotesk text-[14px] text-cream hover:text-neon uppercase tracking-[0.08em] transition"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    <ChevronRight className="w-4 h-4" />
                   </a>
                 ))}
               </div>
             </nav>
-            <div className="hidden lg:block w-[56px]" />
           </header>
 
-          <div className="relative flex flex-1 items-center">
+          <div className="relative flex flex-1 items-center pt-24 sm:pt-28 lg:pt-32">
             <div className="lg:ml-32 w-full lg:max-w-[780px]">
               <div className="relative max-w-[780px]">
                 <h1 className="max-w-[780px] font-grotesk text-[40px] text-cream sm:text-[60px] md:text-[75px] lg:text-[90px] uppercase leading-[1.05] lg:leading-[1]">
@@ -296,12 +356,12 @@ export default function App() {
         <div className="absolute inset-0 px-5 sm:px-8 lg:px-14 py-6 sm:py-8 lg:py-10">
           <div className="relative flex flex-col mx-auto max-w-[1831px] h-full">
             <div className="relative flex-1 min-h-[420px] sm:min-h-[520px] md:min-h-[620px] lg:min-h-[760px]">
-              <div className="top-[10%] right-0 absolute lg:pr-[20%] lg:pl-[15%] max-w-[690px] text-right">
-                <div className="top-0 left-0 absolute text-[17px] sm:text-[32px] md:text-[48px] lg:text-[68px] -translate-x-4 -translate-y-[105%]">
-                  <SectionLabel>Join the Mission</SectionLabel>
+              <div className="self-end mt-10 lg:mt-[12%] 2xl:mt-[14%] lg:mr-0 lg:ml-auto lg:pr-[12%] 2xl:pr-[22%] xl:pr-[18%] lg:max-w-[760px] 2xl:max-w-[980px] xl:max-w-[820px] text-right">
+                <div className="mb-3 font-condiment text-[20px] text-neon sm:text-[28px] md:text-[36px] lg:text-[48px] 2xl:text-[60px] mix-blend-exclusion">
+                  Join the Mission
                 </div>
-                <h2 className="font-grotesk text-[16px] text-cream sm:text-[28px] md:text-[42px] lg:text-[60px] uppercase leading-[1.02]">
-                  <span className="block mb-4 sm:mb-6 lg:mb-12">
+                <h2 className="font-grotesk text-[24px] text-cream sm:text-[32px] md:text-[42px] lg:text-[60px] 2xl:text-[72px] uppercase leading-[1.02] 2xl:leading-[0.96]">
+                  <span className="block mb-4 sm:mb-6 lg:mb-12 2xl:mb-16">
                     OWN THE SIGNAL.
                   </span>
                   CLAIM A PIECE OF ORBITAL ARTIFACTS.
