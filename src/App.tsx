@@ -1,9 +1,10 @@
-import { ChevronRight, Github, Mail, Twitter } from "lucide-react";
+import { ChevronDown, ChevronRight, Github, Mail, Twitter } from "lucide-react";
+import * as Accordion from "@radix-ui/react-accordion";
 
 const socialLinks = [
   { label: "Mail", icon: Mail, href: "mailto:hello@orbis.nft" },
-  { label: "Twitter", icon: Twitter, href: "https://twitter.com" },
-  { label: "Github", icon: Github, href: "https://github.com" },
+  { label: "Twitter", icon: Twitter, href: "https://nirmalkharal.tech/" },
+  { label: "Github", icon: Github, href: "https://nirmalkharal.tech/" },
 ];
 
 const collectionItems = [
@@ -21,6 +22,34 @@ const collectionItems = [
     video:
       "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_055427_ac7035b5-9f3b-4289-86fc-941b2432317d.mp4",
     score: "8.2/10",
+  },
+];
+
+const faqItems = [
+  {
+    question: "How does minting work?",
+    answer:
+      "Mint access follows the signal shown in this collection and opens through the drop flow tied to the project.",
+  },
+  {
+    question: "What do I get?",
+    answer:
+      "A single Orbis.Nft object tied to the visual language of the drop, plus the supporting contact and gallery experience.",
+  },
+  {
+    question: "Can I reach the team?",
+    answer:
+      "Use the contact panel on the right, or use the social links that route to the project site.",
+  },
+  {
+    question: "When is the drop?",
+    answer:
+      "Drops are announced on the project site and social channels — follow the website for exact timings and whitelist information.",
+  },
+  {
+    question: "How do I buy?",
+    answer:
+      "Connect your wallet on the Buy NFT page and follow the mint flow; the Buy page contains step-by-step instructions.",
   },
 ];
 
@@ -50,6 +79,67 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+function GlassCard({
+  title,
+  subtitle,
+  children,
+}: {
+  title: string;
+  subtitle: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="p-5 sm:p-6 lg:p-7 rounded-[28px] h-full liquid-glass">
+      <div className="flex flex-col gap-5 sm:gap-6 h-full">
+        <div className="space-y-2">
+          <div className="font-condiment text-[20px] text-neon sm:text-[28px] mix-blend-exclusion">
+            {title}
+          </div>
+          <h3 className="font-grotesk text-[24px] text-cream sm:text-[34px] md:text-[40px] uppercase leading-[1.02]">
+            {subtitle}
+          </h3>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function FaqAccordion() {
+  return (
+    <Accordion.Root
+      type="single"
+      collapsible
+      defaultValue="item-0"
+      className="bg-black/10 border border-white/10 rounded-[24px] divide-y divide-white/10 overflow-hidden"
+    >
+      {faqItems.map((item, index) => (
+        <Accordion.Item
+          key={item.question}
+          value={`item-${index}`}
+          className="px-4 sm:px-5"
+        >
+          <Accordion.Header>
+            <Accordion.Trigger className="flex justify-between items-center gap-4 py-4 w-full hover:text-neon text-left transition">
+              <span className="font-grotesk text-[16px] sm:text-[18px] md:text-[20px] uppercase tracking-[0.04em]">
+                {item.question}
+              </span>
+              <ChevronDown className="w-5 h-5 data-[state=open]:rotate-180 transition-transform duration-300 shrink-0" />
+            </Accordion.Trigger>
+          </Accordion.Header>
+          <Accordion.Content className="pb-4 overflow-hidden transition-all duration-300">
+            <div className="min-h-0">
+              <p className="max-w-[34rem] font-mono text-[12px] text-cream/80 sm:text-[13px] md:text-[14px] uppercase leading-[1.7]">
+                {item.answer}
+              </p>
+            </div>
+          </Accordion.Content>
+        </Accordion.Item>
+      ))}
+    </Accordion.Root>
+  );
+}
+
 export default function App() {
   return (
     <main className="bg-background text-cream">
@@ -66,6 +156,7 @@ export default function App() {
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_045634_e1c98c76-1265-4f5c-882a-4276f2080894.mp4"
         />
         <div className="absolute inset-0 bg-[#010828]/35" />
+
         <div className="relative flex flex-col mx-auto px-5 sm:px-8 lg:px-14 pt-5 sm:pt-7 lg:pt-8 pb-10 sm:pb-12 lg:pb-16 max-w-[1831px] min-h-screen">
           <header className="flex justify-between items-start gap-4">
             <div className="font-grotesk text-[16px] text-cream uppercase tracking-[0.08em]">
@@ -77,8 +168,8 @@ export default function App() {
                   { label: "Homepage", href: "#homepage" },
                   { label: "Gallery", href: "#gallery" },
                   { label: "Buy NFT", href: "#buy-nft" },
-                  { label: "FAQ", href: "#faq" },
-                  { label: "Contact", href: "#contact" },
+                  { label: "FAQ", href: "#faq-contact" },
+                  { label: "Contact", href: "#faq-contact" },
                 ].map((item) => (
                   <a
                     key={item.label}
@@ -117,71 +208,6 @@ export default function App() {
               {socialLinks.map((link) => (
                 <SocialButton key={link.label} {...link} />
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative min-h-screen overflow-hidden">
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_151551_992053d1-3d3e-4b8c-abac-45f22158f411.mp4"
-        />
-        <div className="absolute inset-0 bg-[#010828]/25" />
-        <div className="relative flex flex-col justify-between gap-16 mx-auto px-5 sm:px-8 lg:px-14 py-16 sm:py-20 lg:py-24 max-w-[1831px] min-h-screen">
-          <div className="flex lg:flex-row flex-col justify-between items-start lg:items-end gap-10">
-            <div className="relative max-w-[680px]">
-              <h2 className="font-grotesk text-[32px] text-cream sm:text-[44px] md:text-[52px] lg:text-[60px] uppercase leading-[1.05] lg:leading-[1]">
-                Hello!
-                <br />
-                I&apos;m orbis
-              </h2>
-              <div className="right-0 bottom-0 absolute text-[36px] sm:text-[48px] md:text-[58px] lg:text-[68px] rotate-[-5deg] translate-y-3 pointer-events-none">
-                <SectionLabel>Orbis</SectionLabel>
-              </div>
-            </div>
-            <p className="max-w-[266px] font-mono text-[14px] text-cream sm:text-[15px] lg:text-[16px] uppercase leading-[1.6]">
-              A digital object fixed beyond time and place. An exploration of
-              distance, form, and silence in space
-            </p>
-          </div>
-
-          <div className="gap-10 lg:gap-16 grid lg:grid-cols-2">
-            <div className="gap-6 grid opacity-10">
-              {[0, 1].map((block) => (
-                <div key={block} className="gap-6 grid">
-                  {[0, 1].map((line) => (
-                    <p
-                      key={line}
-                      className="max-w-[390px] font-mono text-[14px] text-cream uppercase leading-[1.6]"
-                    >
-                      A digital object fixed beyond time and place. An
-                      exploration of distance, form, and silence in space
-                    </p>
-                  ))}
-                </div>
-              ))}
-            </div>
-            <div className="hidden lg:block">
-              <div className="gap-6 grid opacity-10">
-                {[0, 1].map((block) => (
-                  <div key={block} className="gap-6 grid">
-                    {[0, 1].map((line) => (
-                      <p
-                        key={line}
-                        className="max-w-[390px] font-mono text-[14px] text-cream uppercase leading-[1.6]"
-                      >
-                        A digital object fixed beyond time and place. An
-                        exploration of distance, form, and silence in space
-                      </p>
-                    ))}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -267,102 +293,160 @@ export default function App() {
         />
         <div className="absolute inset-0 bg-[#010828]/10" />
 
-        <div className="hidden bottom-[12%] sm:bottom-[14%] md:bottom-[16%] xl:bottom-[20%] left-[8%] z-10 absolute lg:flex flex-col bg-transparent border border-white/10 rounded-[0.5rem] overflow-hidden pointer-events-none">
-          {socialLinks.map((link, index) => {
-            const Icon = link.icon;
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                aria-label={link.label}
-                className={`pointer-events-auto flex items-center justify-center border-white/10 bg-transparent transition hover:bg-white/10 ${
-                  index < socialLinks.length - 1 ? "border-b" : ""
-                } w-[14vw] sm:w-[14.375rem] md:w-[10.78125rem] lg:w-[16.77rem] h-[14vw] sm:h-[14.375rem] md:h-[10.78125rem] lg:h-[16.77rem]`}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-              >
-                <Icon className="w-5 h-5 text-cream" />
-
-                <div
-                  id="faq"
-                  className="top-5 sm:top-8 lg:top-[10%] right-5 sm:right-8 lg:right-[8%] z-10 absolute p-5 sm:p-6 rounded-[28px] w-[min(92vw,42rem)] liquid-glass"
-                >
-                  <div className="flex flex-col gap-5 sm:gap-6">
-                    <div>
-                      <div className="mb-2 font-condiment text-[22px] text-neon sm:text-[30px] mix-blend-exclusion">
-                        FAQ
-                      </div>
-                      <h3 className="font-grotesk text-[24px] text-cream sm:text-[36px] md:text-[42px] uppercase leading-[1.02]">
-                        Common questions
-                        <br />
-                        about the orbit
-                      </h3>
-                    </div>
-
-                    <div className="gap-3 grid font-mono text-[12px] text-cream sm:text-[13px] md:text-[14px] uppercase leading-[1.6]">
-                      <p className="bg-black/10 p-4 border border-white/10 rounded-[18px]">
-                        How does minting work? Mint access follows the signal
-                        shown in this collection.
-                      </p>
-                      <p className="bg-black/10 p-4 border border-white/10 rounded-[18px]">
-                        What do I get? A single Orbis.Nft object tied to the
-                        visual language of the drop.
-                      </p>
-                      <p className="bg-black/10 p-4 border border-white/10 rounded-[18px]">
-                        Can I reach the team? Use the contact links in the
-                        header or the signal below.
-                      </p>
-                    </div>
-                  </div>
+        <div className="absolute inset-0 px-5 sm:px-8 lg:px-14 py-6 sm:py-8 lg:py-10">
+          <div className="relative flex flex-col mx-auto max-w-[1831px] h-full">
+            <div className="relative flex-1 min-h-[420px] sm:min-h-[520px] md:min-h-[620px] lg:min-h-[760px]">
+              <div className="top-[10%] right-0 absolute lg:pr-[20%] lg:pl-[15%] max-w-[690px] text-right">
+                <div className="top-0 left-0 absolute text-[17px] sm:text-[32px] md:text-[48px] lg:text-[68px] -translate-x-4 -translate-y-[105%]">
+                  <SectionLabel>Join the Mission</SectionLabel>
                 </div>
-
-                <div
-                  id="contact"
-                  className="bottom-5 sm:bottom-8 lg:bottom-[8%] left-5 sm:left-8 lg:left-[8%] z-10 absolute p-4 sm:p-5 rounded-[24px] w-[min(92vw,32rem)] liquid-glass"
-                >
-                  <div className="flex flex-col gap-3">
-                    <div className="font-condiment text-[20px] text-neon sm:text-[28px] mix-blend-exclusion">
-                      Contact
-                    </div>
-                    <p className="max-w-[24rem] font-mono text-[12px] text-cream sm:text-[13px] md:text-[14px] uppercase leading-[1.6]">
-                      Start with the mail icon, or connect through the social
-                      links already placed on the page.
-                    </p>
-                    <div className="flex flex-wrap gap-3 pt-2">
-                      <a
-                        href="mailto:hello@orbis.nft"
-                        className="bg-white/5 hover:bg-white/10 px-4 py-2 border border-white/15 rounded-full font-grotesk text-[12px] text-cream uppercase tracking-[0.08em] transition"
-                      >
-                        Mail the signal
-                      </a>
-                      <a
-                        href="#gallery"
-                        className="bg-white/5 hover:bg-white/10 px-4 py-2 border border-white/15 rounded-full font-grotesk text-[12px] text-cream uppercase tracking-[0.08em] transition"
-                      >
-                        Return to gallery
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-
-        <div className="z-10 absolute inset-0 mx-auto px-5 sm:px-8 lg:px-14 max-w-[1831px]">
-          <div className="relative h-full min-h-[420px] sm:min-h-[520px] md:min-h-[620px] lg:min-h-[760px]">
-            <div className="top-[10%] right-0 absolute lg:pr-[20%] lg:pl-[15%] max-w-[690px] text-right">
-              <div className="top-0 left-0 absolute text-[17px] sm:text-[32px] md:text-[48px] lg:text-[68px] -translate-x-4 -translate-y-[105%]">
-                <SectionLabel>Go beyond</SectionLabel>
+                <h2 className="font-grotesk text-[16px] text-cream sm:text-[28px] md:text-[42px] lg:text-[60px] uppercase leading-[1.02]">
+                  <span className="block mb-4 sm:mb-6 lg:mb-12">
+                    OWN THE SIGNAL.
+                  </span>
+                  CLAIM A PIECE OF ORBITAL ARTIFACTS.
+                  <br />
+                  MINT, COLLECT, PRESERVE.
+                  <br />
+                  JOIN THE DROP.
+                </h2>
               </div>
-              <h2 className="font-grotesk text-[16px] text-cream sm:text-[28px] md:text-[42px] lg:text-[60px] uppercase leading-[1.02]">
-                <span className="block mb-4 sm:mb-6 lg:mb-12">JOIN US.</span>
-                REVEAL WHAT&apos;S HIDDEN.
-                <br />
-                DEFINE WHAT&apos;S NEXT.
-                <br />
-                FOLLOW THE SIGNAL.
-              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="faq-contact"
+        className="relative bg-background min-h-screen overflow-hidden scroll-mt-10"
+      >
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_053923_22c0a6a5-313c-474c-85ff-3b50d25e944a.mp4"
+        />
+        <div className="absolute inset-0 bg-[#010828]/35" />
+
+        <div className="relative flex flex-col mx-auto px-5 sm:px-8 lg:px-14 py-16 sm:py-20 lg:py-24 max-w-[1831px] min-h-screen">
+          <div className="self-end mb-10 lg:ml-auto max-w-[780px] text-right">
+            <div className="mb-3 font-condiment text-[20px] text-neon sm:text-[28px] md:text-[36px] lg:text-[48px] mix-blend-exclusion">
+              Go beyond
+            </div>
+            <h2 className="font-grotesk text-[24px] text-cream sm:text-[32px] md:text-[42px] lg:text-[60px] uppercase leading-[1.02]">
+              <span className="block mb-4 sm:mb-6 lg:mb-12">JOIN US.</span>
+              REVEAL WHAT&apos;S HIDDEN.
+              <br />
+              DEFINE WHAT&apos;S NEXT.
+              <br />
+              FOLLOW THE SIGNAL.
+            </h2>
+          </div>
+
+          <div className="lg:items-stretch gap-4 grid lg:grid-cols-2">
+            <div className="p-5 sm:p-6 lg:p-7 rounded-[28px] liquid-glass">
+              <div className="flex flex-col gap-5 sm:gap-6 h-full">
+                <div className="space-y-2">
+                  <div className="font-condiment text-[20px] text-neon sm:text-[28px] mix-blend-exclusion">
+                    FAQ
+                  </div>
+                  <h3 className="font-grotesk text-[24px] text-cream sm:text-[34px] md:text-[40px] uppercase leading-[1.02]">
+                    Common questions
+                    <br />
+                    about the orbit
+                  </h3>
+                </div>
+
+                <FaqAccordion />
+              </div>
+            </div>
+
+            <div className="p-5 sm:p-6 lg:p-7 rounded-[28px] liquid-glass">
+              <div className="flex flex-col gap-6 h-full">
+                <div className="space-y-2">
+                  <div className="font-condiment text-[20px] text-neon sm:text-[28px] mix-blend-exclusion">
+                    Contact
+                  </div>
+                  <h3 className="font-grotesk text-[24px] text-cream sm:text-[34px] md:text-[40px] uppercase leading-[1.02]">
+                    Reach the
+                    <br />
+                    signal line
+                  </h3>
+                  <p className="max-w-[28rem] font-mono text-[12px] text-cream/80 sm:text-[13px] md:text-[14px] uppercase leading-[1.7]">
+                    A more standard website-style contact layout, with direct
+                    actions and a compact info block.
+                  </p>
+                </div>
+
+                <div className="gap-3 grid sm:grid-cols-2">
+                  <a
+                    href="mailto:hello@orbis.nft"
+                    className="bg-black/10 hover:bg-white/10 p-4 border border-white/10 rounded-[18px] transition"
+                  >
+                    <div className="font-grotesk text-[12px] text-neon uppercase tracking-[0.08em]">
+                      Email
+                    </div>
+                    <div className="mt-2 font-mono text-[12px] text-cream sm:text-[13px] uppercase">
+                      hello@orbis.nft
+                    </div>
+                  </a>
+                  <a
+                    href="https://nirmalkharal.tech/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-black/10 hover:bg-white/10 p-4 border border-white/10 rounded-[18px] transition"
+                  >
+                    <div className="font-grotesk text-[12px] text-neon uppercase tracking-[0.08em]">
+                      Website
+                    </div>
+                    <div className="mt-2 font-mono text-[12px] text-cream sm:text-[13px] uppercase">
+                      nirmalkharal.tech
+                    </div>
+                  </a>
+                </div>
+
+                <div className="gap-3 grid font-mono text-[12px] text-cream sm:text-[13px] md:text-[14px] uppercase leading-[1.6]">
+                  <a
+                    href="#gallery"
+                    className="flex justify-between items-center bg-black/10 hover:bg-white/10 p-4 border border-white/10 rounded-[18px] transition"
+                  >
+                    <span>Return to gallery</span>
+                    <span className="font-grotesk text-[12px] tracking-[0.08em]">
+                      VIEW
+                    </span>
+                  </a>
+                  <div className="bg-black/10 p-4 border border-white/10 rounded-[18px]">
+                    The social links route to the project website and the
+                    section stays aligned with the rest of the page design.
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-3 pt-1">
+                  {socialLinks.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        aria-label={link.label}
+                        className="flex justify-center items-center hover:bg-white/10 rounded-[1rem] w-14 h-14 transition liquid-glass"
+                        target={
+                          link.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          link.href.startsWith("http")
+                            ? "noreferrer"
+                            : undefined
+                        }
+                      >
+                        <Icon className="w-5 h-5 text-cream" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>
