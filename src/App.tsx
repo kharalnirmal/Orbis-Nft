@@ -177,7 +177,7 @@ export default function App() {
         <div className="absolute inset-0 bg-[#010828]/35" />
 
         <div className="relative flex flex-col mx-auto px-5 sm:px-8 lg:px-14 pt-5 sm:pt-7 lg:pt-8 pb-10 sm:pb-12 lg:pb-16 max-w-[1831px] min-h-screen">
-          <header className="top-5 sm:top-7 lg:top-8 right-5 sm:right-8 lg:right-14 left-5 sm:left-8 lg:left-14 z-30 absolute flex flex-col gap-4">
+          <header className="top-5 sm:top-7 lg:top-8 right-5 sm:right-8 lg:right-14 left-5 sm:left-8 lg:left-14 z-[100] absolute flex flex-col gap-4">
             <div className="flex justify-between items-center gap-4">
               <div className="font-grotesk text-[16px] text-cream uppercase tracking-[0.08em]">
                 Orbis.Nft
@@ -244,20 +244,20 @@ export default function App() {
             </nav>
           </header>
 
-          <div className="relative flex flex-1 items-center pt-24 sm:pt-28 lg:pt-32">
-            <div className="lg:ml-32 w-full lg:max-w-[780px]">
-              <div className="relative max-w-[780px]">
-                <h1 className="max-w-[780px] font-grotesk text-[40px] text-cream sm:text-[60px] md:text-[75px] lg:text-[90px] uppercase leading-[1.05] lg:leading-[1]">
+          <div className="relative flex flex-1 items-center pt-28 sm:pt-28 lg:pt-32">
+            <div className="mx-auto lg:ml-32 w-full lg:max-w-[780px]">
+              <div className="relative max-w-[780px] lg:text-left text-center">
+                <h1 className="mx-auto max-w-[780px] font-grotesk text-[40px] text-cream sm:text-[60px] md:text-[75px] lg:text-[90px] uppercase leading-[1.05] lg:leading-[1]">
                   Beyond earth
                   <br />
                   and ( its ) familiar boundaries
                 </h1>
-                <div className="top-12 sm:top-16 md:top-20 lg:top-24 right-0 absolute opacity-90 text-[24px] sm:text-[36px] md:text-[48px] -rotate-1 pointer-events-none">
+                <div className="top-12 lg:top-24 right-auto lg:right-0 left-1/2 lg:left-auto absolute opacity-90 text-[24px] sm:text-[36px] md:text-[48px] -rotate-1 -translate-x-1/2 lg:translate-x-0 pointer-events-none">
                   <SectionLabel>Nft collection</SectionLabel>
                 </div>
               </div>
 
-              <div className="lg:hidden flex items-center gap-4 mt-10">
+              <div className="lg:hidden flex justify-center items-center gap-4 mt-10">
                 {socialLinks.map((link) => (
                   <SocialButton key={link.label} {...link} />
                 ))}
